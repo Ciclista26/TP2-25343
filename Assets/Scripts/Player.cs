@@ -43,14 +43,5 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	 void OnTriggerEnter(Collider other) {
-        Debug.Log("Trigger entered by" + other.gameObject.name);
-        if(other.gameObject.tag == "Enimy"){
-            Debug.Log("Win");
-            //SceneManager.LoadScene("ScreneWin");
-			SceneManager.LoadScene("Scenes/ScreneWin");
-        }
-    }
-
 	
 }

@@ -1,14 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class KeyWin : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log("Trigger entered by " + other.gameObject.name);
-        if(other.gameObject.tag == "Enemy"){
-            Debug.Log("Win");
-            SceneManager.LoadScene("ScreneWin");
-        }
+    private GameObject gController;
+
+    private void Start() {
+        //Get Game Controller
+        gController = GameObject.Find("Game Controller");
     }
 
+    public void OnTriggerEnter(Collider other) {
+        Debug.Log("Hello: 2");
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Hello: ");
+            //Delete Collectable
+            Destroy(gameObject);
+            //Update stored number of Collectables
+            gController.transform.GetComponent<GameController>().numberCollectables -= 1;
+        }
+    }
 }
